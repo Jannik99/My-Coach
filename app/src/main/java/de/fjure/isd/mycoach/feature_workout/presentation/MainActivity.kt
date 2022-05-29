@@ -1,4 +1,4 @@
-package de.fjure.isd.mycoach
+package de.fjure.isd.mycoach.feature_workout.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
