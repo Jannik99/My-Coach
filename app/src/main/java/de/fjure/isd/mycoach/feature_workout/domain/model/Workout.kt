@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 data class Workout(
     val name: String,
     val description: String,
+    val category: WorkoutCategory,
     val createdAt: Long,
     val lastWorkedOut: Long,
     val picture: String,
