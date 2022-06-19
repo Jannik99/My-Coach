@@ -11,4 +11,8 @@ import de.fjure.isd.mycoach.feature_workout.domain.model.Workout
 abstract class WorkoutDatabase: RoomDatabase() {
 
     abstract val workoutDao: WorkoutDao
+
+    companion object {
+        const val DATABASE_NAME = "workouts_db"
+    }
 }
