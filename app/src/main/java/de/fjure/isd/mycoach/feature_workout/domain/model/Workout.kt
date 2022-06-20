@@ -21,3 +21,10 @@ data class Workout(
         )
     }
 }
+
+enum class WorkoutCategory {
+    SummerBody,
+    Popular
+}
+
+class InvalidWorkoutException(message: String): Exception(message)

@@ -9,6 +9,7 @@ import dagger.hilt.components.SingletonComponent
 import de.fjure.isd.mycoach.feature_workout.data.data_source.WorkoutDatabase
 import de.fjure.isd.mycoach.feature_workout.data.repository.WorkoutRepositoryImpl
 import de.fjure.isd.mycoach.feature_workout.domain.repository.WorkoutRepository
+import de.fjure.isd.mycoach.feature_workout.domain.use_case.AddWorkoutUseCase
 import de.fjure.isd.mycoach.feature_workout.domain.use_case.DeleteWorkoutUseCase
 import de.fjure.isd.mycoach.feature_workout.domain.use_case.GetWorkoutsUseCase
 import de.fjure.isd.mycoach.feature_workout.domain.use_case.WorkoutUseCases
@@ -39,7 +40,8 @@ object AppModule {
     fun provideWorkoutUseCases(repository: WorkoutRepository): WorkoutUseCases {
         return WorkoutUseCases(
             getWorkouts = GetWorkoutsUseCase(repository),
-            deleteWorkoutUseCase = DeleteWorkoutUseCase(repository)
+            deleteWorkoutUseCase = DeleteWorkoutUseCase(repository),
+            addWorkoutUseCase = AddWorkoutUseCase(repository),
         )
     }
 }
