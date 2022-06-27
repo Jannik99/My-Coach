@@ -8,9 +8,11 @@
         <entry key="..\:/Users/Flo/AndroidStudioProjects/MyCoach/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14" />
         <entry key="..\:/Users/Flo/AndroidStudioProjects/MyCoach/app/src/main/res/xml/network_security_config.xml" value="0.18541666666666667" />
         <entry key="app/src/main/java/de/fjure/isd/mycoach/commons/presentation/components/GenericButton.kt" value="0.29906542056074764" />
+        <entry key="app/src/main/java/de/fjure/isd/mycoach/commons/presentation/components/GenericTextField.kt" value="0.3574074074074074" />
         <entry key="app/src/main/java/de/fjure/isd/mycoach/feature_workout/presentation/MainActivity.kt" value="1.0" />
         <entry key="app/src/main/java/de/fjure/isd/mycoach/feature_workout/presentation/add_edit_workout/AddWorkout.kt" value="0.25" />
         <entry key="app/src/main/java/de/fjure/isd/mycoach/feature_workout/presentation/add_edit_workout/components/AddExerciseItem.kt" value="0.3264358108108108" />
+        <entry key="app/src/main/java/de/fjure/isd/mycoach/feature_workout/presentation/add_edit_workout/components/FinalizeWorkout.kt" value="0.2" />
         <entry key="app/src/main/java/de/fjure/isd/mycoach/feature_workout/presentation/workout_details/WorkoutDetails.kt" value="0.32559121621621623" />
         <entry key="app/src/main/java/de/fjure/isd/mycoach/feature_workout/presentation/workout_details/components/WorkoutDetailsHeader.kt" value="0.32559121621621623" />
         <entry key="app/src/main/java/de/fjure/isd/mycoach/feature_workout/presentation/workouts/components/WorkoutItem.kt" value="0.5" />

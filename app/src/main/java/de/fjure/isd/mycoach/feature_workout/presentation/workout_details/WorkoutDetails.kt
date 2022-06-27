@@ -8,26 +8,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.fjure.isd.mycoach.commons.presentation.components.GenericButton
-import de.fjure.isd.mycoach.feature_workout.domain.model.Workout
-import de.fjure.isd.mycoach.feature_workout.domain.model.WorkoutCategory
+import de.fjure.isd.mycoach.feature_workout.model.Workout
 import de.fjure.isd.mycoach.feature_workout.presentation.workout_details.components.WorkoutDetailsHeader
 import de.fjure.isd.mycoach.feature_workout.presentation.workout_details.components.WorkoutDetailsPlaylist
+import de.fjure.isd.mycoach.json_data.JsonController
 import de.fjure.isd.mycoach.ui.theme.Blue
 import de.fjure.isd.mycoach.ui.theme.DarkGrey
 import de.fjure.isd.mycoach.ui.theme.MyCoachTheme
 
 @Composable
 fun WorkoutDetails(
-    workout: Workout = Workout(
-        name = "test",
-        description = "test beschreibung",
-        category = WorkoutCategory.Popular,
-        createdAt = 1L,
-        lastWorkedOut = 1L,
-        id = 1,
-        playList = "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        imageURL = "https://www.yogabox.de/blog/wp-content/uploads/2019/10/yoga-unsplash.com_-1024x646.jpg",
-    ),
+    workout: Workout,
 ) {
     Column(
         modifier = Modifier
@@ -55,6 +46,6 @@ fun WorkoutDetails(
 @Composable
 fun WorkoutDetailsPreview() {
     MyCoachTheme {
-        WorkoutDetails()
+        WorkoutDetails(JsonController().testWorkout)
     }
 }

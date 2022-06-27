@@ -1,4 +1,4 @@
-package de.fjure.isd.mycoach.feature_workout.domain.model
+package de.fjure.isd.mycoach.feature_workout.model
 
 class Exercise(
     val id: String,

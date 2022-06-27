@@ -15,21 +15,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.fjure.isd.mycoach.R
-import de.fjure.isd.mycoach.feature_workout.domain.model.Workout
-import de.fjure.isd.mycoach.feature_workout.domain.model.WorkoutCategory
+import de.fjure.isd.mycoach.feature_workout.model.Workout
+import de.fjure.isd.mycoach.json_data.JsonController
 
 @Composable
 fun WorkoutItem(
-    workout: Workout = Workout(
-        name = "test",
-        description = "test beschreibung",
-        category = WorkoutCategory.Popular,
-        createdAt = 1L,
-        lastWorkedOut = 1L,
-        id = 1,
-        playList = "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        imageURL = "https://www.yogabox.de/blog/wp-content/uploads/2019/10/yoga-unsplash.com_-1024x646.jpg",
-    ),
+    workout: Workout,
     modifier: Modifier = Modifier,
     cornerRadius: Dp = 10.dp,
     onWorkoutClick: () -> Unit = {},
@@ -56,5 +47,8 @@ fun WorkoutItem(
 @Preview
 @Composable
 fun WorkoutItemPreview() {
-    WorkoutItem()
+    WorkoutItem(
+        workout = JsonController().testWorkout,
+        onWorkoutClick = {}
+    )
 }

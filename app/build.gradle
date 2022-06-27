@@ -101,7 +101,8 @@ dependencies {
     // Image Loading
     implementation("io.coil-kt:coil-compose:2.0.0-rc01")
 
-    
+    // GSON for JSON
+    implementation('com.google.code.gson:gson:2.9.0')
 }
 
 kapt {

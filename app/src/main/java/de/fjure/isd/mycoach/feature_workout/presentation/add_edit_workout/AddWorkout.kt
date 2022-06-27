@@ -2,6 +2,8 @@ package de.fjure.isd.mycoach.feature_workout.presentation.add_edit_workout
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
@@ -10,39 +12,37 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.fjure.isd.mycoach.commons.presentation.components.GenericButton
-import de.fjure.isd.mycoach.feature_workout.domain.model.Exercise
+import de.fjure.isd.mycoach.feature_workout.model.Exercise
 import de.fjure.isd.mycoach.feature_workout.presentation.add_edit_workout.components.AddExerciseItem
+import de.fjure.isd.mycoach.json_data.JsonController
 import de.fjure.isd.mycoach.ui.theme.*
 
 @Composable
 fun AddWorkout() {
-    val exercises: Array<Exercise> =
-        arrayOf(
-            Exercise(
-                "1",
-                "Bench Press",
-                "Eine Leistungsübung",
-                "https://modusx.de/wp-content/uploads/2021/01/bankdruecken-langhantel.jpg",
-                2
-            )
-        )
+    val sampleExercise = JsonController().testWorkout.exercises[0]
+    val exercises = remember { mutableStateListOf<Exercise>() }
+    val scrollState = rememberScrollState()
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(DarkGrey)
             .wrapContentSize(Alignment.TopCenter)
+            .verticalScroll(scrollState)
     ) {
         Text(text = "Workout erstellen", style = Typography.h1)
 
         Spacer(modifier = Modifier.height(50.dp))
 
         Column(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             exercises.forEach { exercise ->
@@ -55,7 +55,7 @@ fun AddWorkout() {
                 )
             }
             Button(
-                onClick = { /*TODO*/ },
+                onClick = { exercises.add(sampleExercise) },
                 elevation = ButtonDefaults.elevation(0.dp),
             )
             {
@@ -66,7 +66,6 @@ fun AddWorkout() {
                 )
             }
         }
-
 
         Spacer(modifier = Modifier.weight(1f))
 
@@ -80,7 +79,7 @@ fun AddWorkout() {
 
         )
 
-        Spacer(modifier = Modifier.height(50.dp))
+        Spacer(modifier = Modifier.height(75.dp))
     }
 }
 

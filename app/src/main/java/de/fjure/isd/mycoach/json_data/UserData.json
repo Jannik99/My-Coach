@@ -1,0 +1,62 @@
+[
+    {
+        "id": "1",
+        "username": "DrunkenKermit",
+        "firstname": "Kermit",
+        "lastname": "Der Frosch",
+        "birthdate": "09.05.1955",
+        "createdWorkouts": ["1a", "2a"],
+        "weight": 0.55,
+        "height": 60.0,
+        "motto": "I am the meme",
+        "profileImage": "https://cdn.pixabay.com/photo/2016/09/07/10/37/kermit-1651325_960_720.jpg"
+    },
+    {
+        "id": "2",
+        "username": "DodeCoin",
+        "firstname": "Dpge",
+        "lastname": "Coin",
+        "birthdate": "20.01.1999",
+        "createdWorkouts": ["1a", "2a"],
+        "weight": 65.5,
+        "height": 177.0,
+        "motto": "HODL",
+        "profileImage": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ff.jwwb.nl%2Fpublic%2Fn%2Fw%2Fn%2Ftemp-ftawegmqdjsobwszoaxm%2F102doge.png&f=1&nofb=1"
+    },
+    {
+        "id": "3",
+        "username": "DaSeal",
+        "firstname": "Seal",
+        "lastname": "Die Robbe",
+        "birthdate": "15.12.1985",
+        "createdWorkouts": ["1a", "2a"],
+        "weight": 130.0,
+        "height": 0.95,
+        "motto": "Ich bin cool",
+        "profileImage": "https://images.pexels.com/photos/1917846/pexels-photo-1917846.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    },
+    {
+        "id": "4",
+        "username": "Mr. Bean",
+        "firstname": "Rowan",
+        "lastname": "Atkinson",
+        "birthdate": "06.01.1955",
+        "createdWorkouts": ["1a", "2a"],
+        "weight": 75.0,
+        "height": 181.0,
+        "motto": "Unusual as always",
+        "profileImage": "https://cdn.pixabay.com/photo/2022/02/23/16/29/actor-7030991_1280.jpg"
+    },
+    {
+        "id": "5",
+        "username": "PainHarold",
+        "firstname": "Andras",
+        "lastname": "Arato",
+        "birthdate": "11.06.1945",
+        "createdWorkouts": ["1a", "2a"],
+        "weight": 85.0,
+        "height": 178.9,
+        "motto": "Feeling the Pain",
+        "profileImage": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.oneman.gr%2Fonm-images%2Fmeme1.jpg&f=1&nofb=1"
+    }
+]

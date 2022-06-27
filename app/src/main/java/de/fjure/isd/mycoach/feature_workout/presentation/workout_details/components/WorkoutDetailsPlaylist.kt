@@ -10,8 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import de.fjure.isd.mycoach.feature_workout.domain.model.Workout
-import de.fjure.isd.mycoach.feature_workout.domain.model.WorkoutCategory
+import de.fjure.isd.mycoach.feature_workout.model.Workout
+import de.fjure.isd.mycoach.json_data.JsonController
 import de.fjure.isd.mycoach.ui.theme.Grey
 import de.fjure.isd.mycoach.ui.theme.MyCoachTheme
 import de.fjure.isd.mycoach.ui.theme.Typography
@@ -28,7 +28,7 @@ fun WorkoutDetailsPlaylist(
 
         Image(
             painter = rememberAsyncImagePainter(
-                workout.imageURL,
+                workout.imageUrl,
             ),
             contentDescription = "Titelbild von " + workout.name,
             modifier = Modifier
@@ -66,16 +66,7 @@ fun WorkoutDetailsPlaylist(
 fun WorkoutDetailsPlaylistPreview() {
     MyCoachTheme {
         WorkoutDetailsPlaylist(
-            Workout(
-                name = "test",
-                description = "test beschreibung",
-                category = WorkoutCategory.Popular,
-                createdAt = 1L,
-                lastWorkedOut = 1L,
-                playList = "https://youtu.be/dQw4w9WgXcQ",
-                imageURL = "https://www.yogabox.de/blog/wp-content/uploads/2019/10/yoga-unsplash.com_-1024x646.jpg",
-                id = 1
-            )
+            JsonController().testWorkout,
         )
     }
 }

@@ -15,14 +15,13 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import de.fjure.isd.mycoach.feature_workout.domain.model.Exercise
+import de.fjure.isd.mycoach.feature_workout.model.Exercise
+import de.fjure.isd.mycoach.json_data.JsonController
 import de.fjure.isd.mycoach.ui.theme.DarkGrey
 import de.fjure.isd.mycoach.ui.theme.Ivory
-import de.fjure.isd.mycoach.ui.theme.MyCoachTheme
 
 @Composable
 fun AddExerciseItem(exercise: Exercise) {
-    var e = exercise
     Row(
         modifier = Modifier
             .background(DarkGrey)
@@ -54,14 +53,15 @@ fun AddExerciseItem(exercise: Exercise) {
             Text("Anzahl Ausführungen:")
 
             TextField(
-                value = e.executions.toString(),
+                value = exercise.executions.toString(),
                 modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
                 onValueChange = {
+                    // Funktioniert nicht, wegen Mutable State Gedöns. To be Done.
                     if (it.isNotEmpty()) {
-                        e.executions = it.toInt()
+                        exercise.executions = it.toInt()
                     } else {
-                        e.executions = 0
+                        exercise.executions = 0
                     }
                 }
             )
@@ -72,15 +72,5 @@ fun AddExerciseItem(exercise: Exercise) {
 @Preview(showBackground = true)
 @Composable
 fun AddExerciseItemPreview() {
-    MyCoachTheme {
-        AddExerciseItem(
-            Exercise(
-                "1",
-                "Bench Press",
-                "Eine Leistungsübung",
-                "https://modusx.de/wp-content/uploads/2021/01/bankdruecken-langhantel.jpg",
-                2
-            )
-        )
-    }
+    AddExerciseItem(JsonController().testWorkout.exercises[0])
 }
