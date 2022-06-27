@@ -1,33 +1,36 @@
 package de.fjure.isd.mycoach.feature_workout.presentation.add_edit_workout
 
-import android.icu.text.CaseMap.Title
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CutCornerShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
-import androidx.compose.material.ButtonColors
 import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.MaterialTheme.typography
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import de.fjure.isd.mycoach.R
-import de.fjure.isd.mycoach.feature_workout.presentation.Greeting
-import de.fjure.isd.mycoach.feature_workout.presentation.workouts.components.WorkoutItem
-import de.fjure.isd.mycoach.ui.theme.Blue
-import de.fjure.isd.mycoach.ui.theme.DarkGrey
-import de.fjure.isd.mycoach.ui.theme.MyCoachTheme
-import de.fjure.isd.mycoach.ui.theme.Typography
+import de.fjure.isd.mycoach.commons.presentation.components.GenericButton
+import de.fjure.isd.mycoach.feature_workout.domain.model.Exercise
+import de.fjure.isd.mycoach.feature_workout.presentation.add_edit_workout.components.AddExerciseItem
+import de.fjure.isd.mycoach.ui.theme.*
 
 @Composable
 fun AddWorkout() {
+    val exercises: Array<Exercise> =
+        arrayOf(
+            Exercise(
+                "1",
+                "Bench Press",
+                "Eine Leistungsübung",
+                "https://modusx.de/wp-content/uploads/2021/01/bankdruecken-langhantel.jpg",
+                2
+            )
+        )
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -36,18 +39,48 @@ fun AddWorkout() {
     ) {
         Text(text = "Workout erstellen", style = Typography.h1)
 
-        Spacer(modifier = Modifier.weight(1f))
-        Button(
-            onClick = { /*TODO*/ },
-            colors = ButtonDefaults.buttonColors(backgroundColor = Blue, contentColor = Color.White),
-            shape = RoundedCornerShape(40),
-            modifier = Modifier
-                .width(350.dp)
-                .height(50.dp)
-                    ) {
-            Text(text = "Fertig", fontSize = 20.sp)
+        Spacer(modifier = Modifier.height(50.dp))
+
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            exercises.forEach { exercise ->
+                AddExerciseItem(exercise)
+                Icon(
+                    Icons.Default.ExpandMore,
+                    contentDescription = "",
+                    modifier = Modifier.size(48.dp),
+                    tint = Ivory
+                )
+            }
+            Button(
+                onClick = { /*TODO*/ },
+                elevation = ButtonDefaults.elevation(0.dp),
+            )
+            {
+                Icon(
+                    Icons.Default.Add,
+                    contentDescription = "",
+                    modifier = Modifier.size(48.dp)
+                )
+            }
         }
-        Spacer(modifier = Modifier.height(10.dp))
+
+
+        Spacer(modifier = Modifier.weight(1f))
+
+        GenericButton(
+            color = Blue,
+            text = "Fertig",
+            onClick = { /*TODO*/ },
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentSize(Alignment.Center)
+
+        )
+
+        Spacer(modifier = Modifier.height(50.dp))
     }
 }
 

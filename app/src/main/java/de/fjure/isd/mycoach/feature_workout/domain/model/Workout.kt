@@ -10,16 +10,13 @@ data class Workout(
     val category: WorkoutCategory,
     val createdAt: Long,
     val lastWorkedOut: Long,
-    val picture: String,
-    @PrimaryKey val id: Int? = null,
+    val imageURL: String,
+    val playList: String?,
+    //val Exercises: Optional<Array<Exercise>>,
+
+    @PrimaryKey
+    val id: Int? = null,
 ) {
-    companion object {
-        val placeholderImages = listOf<String>(
-            "https://pixabay.com/de/photos/kettlebell-fitness-crossfit-fit-3293475/",
-            "https://pixabay.com/de/photos/planke-fitness-muskulös-trainieren-1327256/",
-            "https://pixabay.com/de/photos/frau-yoga-dehnen-meditation-2573216/"
-        )
-    }
 }
 
 enum class WorkoutCategory {
@@ -27,4 +24,4 @@ enum class WorkoutCategory {
     Popular
 }
 
-class InvalidWorkoutException(message: String): Exception(message)
+class InvalidWorkoutException(message: String) : Exception(message)
