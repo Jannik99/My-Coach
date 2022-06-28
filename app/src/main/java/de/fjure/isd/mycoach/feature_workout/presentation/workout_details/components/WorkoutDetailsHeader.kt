@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import coil.compose.rememberAsyncImagePainter
 import de.fjure.isd.mycoach.feature_workout.model.Workout
-import de.fjure.isd.mycoach.json_data.JsonController
+import de.fjure.isd.mycoach.testWorkout
 import de.fjure.isd.mycoach.ui.theme.DarkGrey
 import de.fjure.isd.mycoach.ui.theme.Grey
 import de.fjure.isd.mycoach.ui.theme.MyCoachTheme
@@ -87,6 +87,6 @@ fun WorkoutDetailsHeader(
 @Composable
 fun WorkoutDetailsHeaderPreview() {
     MyCoachTheme {
-        WorkoutDetailsHeader(JsonController().testWorkout)
+        WorkoutDetailsHeader(testWorkout)
     }
 }

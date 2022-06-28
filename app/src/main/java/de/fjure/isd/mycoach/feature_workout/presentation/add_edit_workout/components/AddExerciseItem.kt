@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import de.fjure.isd.mycoach.feature_workout.model.Exercise
-import de.fjure.isd.mycoach.json_data.JsonController
+import de.fjure.isd.mycoach.testWorkout
 import de.fjure.isd.mycoach.ui.theme.DarkGrey
 import de.fjure.isd.mycoach.ui.theme.Ivory
 
@@ -72,5 +72,5 @@ fun AddExerciseItem(exercise: Exercise) {
 @Preview(showBackground = true)
 @Composable
 fun AddExerciseItemPreview() {
-    AddExerciseItem(JsonController().testWorkout.exercises[0])
+    AddExerciseItem(testWorkout.exercises[0])
 }

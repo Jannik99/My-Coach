@@ -11,7 +11,7 @@ import de.fjure.isd.mycoach.commons.presentation.components.GenericButton
 import de.fjure.isd.mycoach.feature_workout.model.Workout
 import de.fjure.isd.mycoach.feature_workout.presentation.workout_details.components.WorkoutDetailsHeader
 import de.fjure.isd.mycoach.feature_workout.presentation.workout_details.components.WorkoutDetailsPlaylist
-import de.fjure.isd.mycoach.json_data.JsonController
+import de.fjure.isd.mycoach.testWorkout
 import de.fjure.isd.mycoach.ui.theme.Blue
 import de.fjure.isd.mycoach.ui.theme.DarkGrey
 import de.fjure.isd.mycoach.ui.theme.MyCoachTheme
@@ -46,6 +46,6 @@ fun WorkoutDetails(
 @Composable
 fun WorkoutDetailsPreview() {
     MyCoachTheme {
-        WorkoutDetails(JsonController().testWorkout)
+        WorkoutDetails(testWorkout)
     }
 }

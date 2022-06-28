@@ -11,7 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import de.fjure.isd.mycoach.feature_workout.model.Workout
-import de.fjure.isd.mycoach.json_data.JsonController
+import de.fjure.isd.mycoach.testWorkout
 import de.fjure.isd.mycoach.ui.theme.Grey
 import de.fjure.isd.mycoach.ui.theme.MyCoachTheme
 import de.fjure.isd.mycoach.ui.theme.Typography
@@ -66,7 +66,7 @@ fun WorkoutDetailsPlaylist(
 fun WorkoutDetailsPlaylistPreview() {
     MyCoachTheme {
         WorkoutDetailsPlaylist(
-            JsonController().testWorkout,
+            testWorkout,
         )
     }
 }

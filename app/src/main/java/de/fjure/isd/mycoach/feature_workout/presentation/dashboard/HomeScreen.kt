@@ -8,7 +8,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import de.fjure.isd.mycoach.feature_workout.presentation.workouts.components.WorkoutItem
 import de.fjure.isd.mycoach.ui.theme.DarkGrey
+import de.fjure.isd.mycoach.workouts
 
 @Composable
 fun HomeScreen() {
@@ -19,5 +21,6 @@ fun HomeScreen() {
             .wrapContentSize(Alignment.Center)
     ) {
         Text(text = "Home")
+        WorkoutItem(workout = workouts[0])
     }
 }

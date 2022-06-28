@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.fjure.isd.mycoach.R
 import de.fjure.isd.mycoach.feature_workout.model.Workout
-import de.fjure.isd.mycoach.json_data.JsonController
+import de.fjure.isd.mycoach.testWorkout
 
 @Composable
 fun WorkoutItem(
@@ -48,7 +48,7 @@ fun WorkoutItem(
 @Composable
 fun WorkoutItemPreview() {
     WorkoutItem(
-        workout = JsonController().testWorkout,
+        workout = testWorkout,
         onWorkoutClick = {}
     )
 }

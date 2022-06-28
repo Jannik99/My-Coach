@@ -21,12 +21,12 @@ import androidx.compose.ui.unit.dp
 import de.fjure.isd.mycoach.commons.presentation.components.GenericButton
 import de.fjure.isd.mycoach.feature_workout.model.Exercise
 import de.fjure.isd.mycoach.feature_workout.presentation.add_edit_workout.components.AddExerciseItem
-import de.fjure.isd.mycoach.json_data.JsonController
+import de.fjure.isd.mycoach.testWorkout
 import de.fjure.isd.mycoach.ui.theme.*
 
 @Composable
 fun AddWorkout() {
-    val sampleExercise = JsonController().testWorkout.exercises[0]
+    val sampleExercise = testWorkout.exercises[0]
     val exercises = remember { mutableStateListOf<Exercise>() }
     val scrollState = rememberScrollState()
     Column(
