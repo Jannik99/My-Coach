@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.dp
 import de.fjure.isd.mycoach.commons.presentation.components.GenericButton
 import de.fjure.isd.mycoach.feature_workout.model.Workout
 import de.fjure.isd.mycoach.feature_workout.presentation.workout_details.active_workout.components.ExerciseDetails
+import de.fjure.isd.mycoach.feature_workout.presentation.workout_details.active_workout.components.Timer
 import de.fjure.isd.mycoach.testWorkout
 import de.fjure.isd.mycoach.ui.theme.DarkGrey
 import de.fjure.isd.mycoach.ui.theme.MyCoachTheme
@@ -21,8 +22,7 @@ import de.fjure.isd.mycoach.ui.theme.Red
 fun ActiveWorkout(
     workout: Workout,
     onDismiss: () -> Unit,
-
-    ) {
+) {
     Column(
         modifier = Modifier
             .background(DarkGrey)
@@ -38,10 +38,18 @@ fun ActiveWorkout(
                 .fillMaxWidth()
                 .wrapContentSize(Alignment.Center),
         )
-        Spacer(modifier = Modifier.weight(1f))
-        Text(text = "Timer")
-        Spacer(modifier = Modifier.weight(1f))
+        Spacer(modifier = Modifier.height(100.dp))
+        Row(
+            modifier = Modifier
+                .wrapContentSize(Alignment.Center)
+                .height(200.dp)
+        ) {
+            Timer()
+        }
+        Spacer(modifier = Modifier.height(100.dp))
+
         ExerciseDetails(exercise = workout.exercises[0])
+        Text(text = "Teesttstste")
     }
 }
 
