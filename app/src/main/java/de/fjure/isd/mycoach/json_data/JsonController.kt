@@ -1,11 +1,13 @@
 package de.fjure.isd.mycoach.json_data
 
 import com.google.gson.Gson
+import de.fjure.isd.mycoach.WorkoutApp
 import de.fjure.isd.mycoach.feature_workout.model.Exercise
 import de.fjure.isd.mycoach.feature_workout.model.User
 import de.fjure.isd.mycoach.feature_workout.model.Workout
 
-class JsonController() {
+
+class JsonController {
     private var gson = Gson()
     var workouts: List<Workout> = listOf()
     var featuredWorkouts: List<Workout> = listOf()
@@ -33,24 +35,23 @@ class JsonController() {
 
     init {
         // getUsers()
-        //   getWorkouts()
-        readJSONFile("WorkoutData.json")
+        // getWorkouts()
+        readJSONFile("Workouts.json")
     }
 
     private fun getUsers() {
-        val json = readJSONFile("UserData.json")
+        val json = readJSONFile("Users.json")
         users = getUsersFromJson(json)
         user = users[0]
     }
 
 
     private fun getUsersFromJson(json: String): List<User> {
-        val us = gson.fromJson(json, Array<User>::class.java).toList()
-        return us
+        return gson.fromJson(json, Array<User>::class.java).toList()
     }
 
     private fun getWorkouts() {
-        val json = readJSONFile("WorkoutData.json")
+        val json = readJSONFile("Workouts.json")
         workouts = getWorkoutData(json)
         featuredWorkouts = getFeaturedWorkouts(workouts)
     }
@@ -66,9 +67,12 @@ class JsonController() {
 
     // Gets the json data from the WorkoutData.json File and returns it as a string
     private fun readJSONFile(filename: String): String {
-        val inputStream = this.javaClass.classLoader.getResourceAsStream(filename)
-        val s = inputStream.bufferedReader().use { it.readText() }
-        return s
+        print("Reading JSON File: $filename")
+        //  WorkoutApp().assets.open(filename).use {
+        //    return it.readBytes().toString(Charsets.UTF_8)
+        // }
+        var assetmanager = WorkoutApp().assets
+        println(assetmanager.list("").toString())
+        return ""
     }
-
 }
