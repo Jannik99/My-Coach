@@ -36,7 +36,7 @@ fun WorkoutItem(
                 contentDescription = null
             )
             Text(
-                text = "Test",
+                text = workout.name,
                 color = Color.White,
                 style = MaterialTheme.typography.h2
             )

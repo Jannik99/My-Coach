@@ -1,18 +1,14 @@
 package de.fjure.isd.mycoach
 
+import android.content.res.AssetManager
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import com.google.gson.Gson
 import de.fjure.isd.mycoach.feature_workout.model.Exercise
 import de.fjure.isd.mycoach.feature_workout.model.User
 import de.fjure.isd.mycoach.feature_workout.model.Workout
+import timber.log.Timber
 import java.io.InputStream
-
-private var gson = Gson()
-var workouts: List<Workout> = listOf()
-var featuredWorkouts: List<Workout> = listOf()
-var users: List<User> = listOf()
-var user: User? = null
 
 var testWorkout: Workout = Workout(
     id = "1",
@@ -33,47 +29,15 @@ var testWorkout: Workout = Workout(
     )
 )
 
-@Composable
-fun setData() {
-    setUsers()
-    setWorkouts()
-}
+class DataController {
 
-@Composable
-private fun setUsers() {
-    val json = ReadDataFile("Users.json")
-    val users = gson.fromJson<List>(json, User::class.java)
-    user = users[0]
-}
-
-@Composable
-private fun setWorkouts() {
-    val json = ReadDataFile("Workouts.json")
-    workouts = gson.fromJson(json, Array<Workout>::class.java).toList()
-    featuredWorkouts = workouts.filter { it.featured }
-}
-
-
-@Composable
-fun ReadDataFile(filename: String): String {
-    var dataText by remember {
-        mutableStateOf("asd")
+    fun readUsers(assets: AssetManager): List<User> {
+        return Gson().fromJson(assets.readAssetsFile("Users.json"), Array<User>::class.java).toList()
     }
 
-    val context = LocalContext.current
-    LaunchedEffect(true) {
-        kotlin.runCatching {
-            val inputStream: InputStream = context.assets.open(filename)
-            val size: Int = inputStream.available()
-            val buffer = ByteArray(size)
-            inputStream.read(buffer)
-            String(buffer)
-        }.onSuccess {
-            dataText = it
-        }.onFailure {
-            dataText = it.message ?: "Error"
-        }
-
+    fun readWorkouts(assets: AssetManager): List<Workout> {
+        return Gson().fromJson(assets.readAssetsFile("Workouts.json"), Array<Workout>::class.java).toList()
     }
-    return dataText
+
+    private fun AssetManager.readAssetsFile(fileName: String): String = open(fileName).bufferedReader().use{it.readText()}
 }

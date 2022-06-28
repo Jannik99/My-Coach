@@ -103,6 +103,10 @@ dependencies {
 
     // GSON for JSON
     implementation('com.google.code.gson:gson:2.9.0')
+
+    // Logger for Kotlin
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+
 }
 
 kapt {
