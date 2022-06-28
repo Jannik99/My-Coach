@@ -78,7 +78,7 @@
     "playlistUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     "imageUrl": "https://cdn.pixabay.com/photo/2017/04/27/08/29/man-2264825_1280.jpg",
     "featured": true,
-    "category": "Category"
+    "category": "Summerbody"
   },
   {
     "id": "u5uat25",
@@ -159,7 +159,7 @@
     "playlistUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     "imageUrl": "https://cdn.pixabay.com/photo/2019/04/14/17/54/woman-4127336_1280.jpg",
     "featured": true,
-    "category": "Category"
+    "category": "Summerbody"
   },
   {
     "id": "m3l3rv0",
@@ -238,8 +238,8 @@
       }
     ],
     "playlistUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    "imageUrl": "https://images.pexels.com/photos/163403/box-sport-men-training-163403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "imageUrl": "https://images.pexels.com/photos/163403/box-sport-men-training-163403.jpeg",
     "featured": false,
-    "category": "Cats"
+    "category": "Dynamisch"
   }
 ]

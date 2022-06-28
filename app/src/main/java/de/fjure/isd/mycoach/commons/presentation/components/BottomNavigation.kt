@@ -6,16 +6,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.navArgument
 import de.fjure.isd.mycoach.feature_workout.presentation.add_edit_workout.AddWorkout
 import de.fjure.isd.mycoach.feature_workout.presentation.community.Community
 import de.fjure.isd.mycoach.feature_workout.presentation.dashboard.HomeScreen
+import de.fjure.isd.mycoach.feature_workout.presentation.workout_details.WorkoutDetails
 import de.fjure.isd.mycoach.feature_workout.presentation.workouts.Workouts
 import de.fjure.isd.mycoach.ui.theme.Coral
 import de.fjure.isd.mycoach.ui.theme.Grey
 import de.fjure.isd.mycoach.ui.theme.Ivory
+import de.fjure.isd.mycoach.workouts
 
 @Composable
 fun BottomNavigation(navController: NavController) {
@@ -60,6 +64,8 @@ fun BottomNavigation(navController: NavController) {
 
 }
 
+
+// ToDo: Remove the Popups and use the NavController.navigate() function instead. Currently only for development purposes.
 @Composable
 fun NavigationGraph(navController: NavHostController) {
     NavHost(navController, startDestination = BottomNavItem.Home.screen_route) {
@@ -67,13 +73,28 @@ fun NavigationGraph(navController: NavHostController) {
             HomeScreen()
         }
         composable(BottomNavItem.Workouts.screen_route) {
-           Workouts()
+            Workouts()
         }
         composable(BottomNavItem.AddWorkout.screen_route) {
             AddWorkout()
         }
         composable(BottomNavItem.Community.screen_route) {
             Community()
+        }
+        composable(
+            "WorkoutDetails?workoutID={workoutID}",
+            arguments = listOf(navArgument("workoutID") { type = NavType.StringType })
+        ) {
+            val workoutID = it.arguments?.getString("workoutID")
+            val workout = workouts.filter { it.id == workoutID }.first()
+            WorkoutDetails(
+                workout = workout,
+                onDismiss = {
+                    navController.popBackStack()
+                }, onStartWorkout = {
+                    // ToDo: Start workout
+                }
+            )
         }
     }
 }

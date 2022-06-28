@@ -1,4 +1,4 @@
-package de.fjure.isd.mycoach.feature_workout.presentation.workout_details.components
+package de.fjure.isd.mycoach.feature_workout.presentation.workout_details.active_workout.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -10,15 +10,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import de.fjure.isd.mycoach.feature_workout.model.Workout
+import de.fjure.isd.mycoach.feature_workout.model.Exercise
 import de.fjure.isd.mycoach.testWorkout
 import de.fjure.isd.mycoach.ui.theme.Grey
 import de.fjure.isd.mycoach.ui.theme.MyCoachTheme
 import de.fjure.isd.mycoach.ui.theme.Typography
 
 @Composable
-fun WorkoutDetailsPlaylist(
-    workout: Workout, modifier: Modifier = Modifier,
+fun ExerciseDetails(
+    exercise: Exercise, modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = Modifier
@@ -28,9 +28,9 @@ fun WorkoutDetailsPlaylist(
 
         Image(
             painter = rememberAsyncImagePainter(
-                workout.imageUrl,
+                exercise.imageUrl,
             ),
-            contentDescription = "Titelbild von " + workout.name,
+            contentDescription = "Titelbild von " + exercise.name,
             modifier = Modifier
                 .weight(1f)
                 .wrapContentSize(Alignment.TopCenter)
@@ -44,14 +44,14 @@ fun WorkoutDetailsPlaylist(
 
         ) {
             Text(
-                text = "Empfohlene Playlist",
+                text = exercise.name,
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentSize(Alignment.Center),
                 style = Typography.h1
             )
             Text(
-                text = "Lorem Ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+                text = exercise.description,
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentSize(Alignment.Center),
@@ -64,10 +64,10 @@ fun WorkoutDetailsPlaylist(
 
 @Preview(showBackground = true)
 @Composable
-fun WorkoutDetailsPlaylistPreview() {
+fun ExerciseDetailsPreview() {
     MyCoachTheme {
-        WorkoutDetailsPlaylist(
-            testWorkout,
+        ExerciseDetails(
+            testWorkout.exercises[0],
         )
     }
 }

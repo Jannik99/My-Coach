@@ -15,11 +15,15 @@ import de.fjure.isd.mycoach.testWorkout
 import de.fjure.isd.mycoach.ui.theme.Blue
 import de.fjure.isd.mycoach.ui.theme.DarkGrey
 import de.fjure.isd.mycoach.ui.theme.MyCoachTheme
+import de.fjure.isd.mycoach.ui.theme.Red
 
 @Composable
 fun WorkoutDetails(
     workout: Workout,
-) {
+    onDismiss: () -> Unit,
+    onStartWorkout: () -> Unit,
+
+    ) {
     Column(
         modifier = Modifier
             .background(DarkGrey)
@@ -33,12 +37,25 @@ fun WorkoutDetails(
         GenericButton(
             color = Blue,
             text = "Workout starten",
-            onClick = { /*TODO*/ },
+            onClick = { onStartWorkout() },
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentSize(Alignment.Center),
         )
+
+        Spacer(modifier = Modifier.weight(1f))
+
         WorkoutDetailsPlaylist(workout = workout)
+        Spacer(modifier = Modifier.height(10.dp))
+        GenericButton(
+            color = Red,
+            text = "Abbrechen",
+            onClick = { onDismiss() },
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentSize(Alignment.Center),
+        )
+        Spacer(modifier = Modifier.height(10.dp))
     }
 }
 
@@ -46,6 +63,6 @@ fun WorkoutDetails(
 @Composable
 fun WorkoutDetailsPreview() {
     MyCoachTheme {
-        WorkoutDetails(testWorkout)
+        WorkoutDetails(testWorkout, onDismiss = {}, onStartWorkout = {})
     }
 }

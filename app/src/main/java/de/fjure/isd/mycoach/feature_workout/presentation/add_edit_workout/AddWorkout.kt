@@ -13,22 +13,29 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import de.fjure.isd.mycoach.commons.presentation.components.GenericButton
 import de.fjure.isd.mycoach.feature_workout.model.Exercise
 import de.fjure.isd.mycoach.feature_workout.presentation.add_edit_workout.components.AddExerciseItem
+import de.fjure.isd.mycoach.feature_workout.presentation.add_edit_workout.components.FinalizeWorkout
 import de.fjure.isd.mycoach.testWorkout
 import de.fjure.isd.mycoach.ui.theme.*
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun AddWorkout() {
     val sampleExercise = testWorkout.exercises[0]
     val exercises = remember { mutableStateListOf<Exercise>() }
     val scrollState = rememberScrollState()
+    val showDialog = remember { mutableStateOf(false) }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -69,19 +76,35 @@ fun AddWorkout() {
 
         Spacer(modifier = Modifier.weight(1f))
 
-        GenericButton(
-            color = Blue,
-            text = "Fertig",
-            onClick = { /*TODO*/ },
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentSize(Alignment.Center)
+        if (exercises.isNotEmpty()) {
+            GenericButton(
+                color = Blue,
+                text = "Fertig",
+                onClick = { showDialog.value = true },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentSize(Alignment.Center)
 
-        )
+            )
+        }
 
-        Spacer(modifier = Modifier.height(75.dp))
+        if (showDialog.value) {
+            Dialog(
+                onDismissRequest = { showDialog.value = false },
+                DialogProperties(usePlatformDefaultWidth = false)
+            ) {
+                FinalizeWorkout(
+                    onDismiss = { showDialog.value = false },
+                    exercises = exercises.toList()
+                )
+            }
+        }
+
     }
+
+    Spacer(modifier = Modifier.height(75.dp))
 }
+
 
 @Preview(showBackground = true)
 @Composable

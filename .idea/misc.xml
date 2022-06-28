@@ -13,9 +13,15 @@
         <entry key="app/src/main/java/de/fjure/isd/mycoach/feature_workout/presentation/add_edit_workout/AddWorkout.kt" value="0.25" />
         <entry key="app/src/main/java/de/fjure/isd/mycoach/feature_workout/presentation/add_edit_workout/components/AddExerciseItem.kt" value="0.3264358108108108" />
         <entry key="app/src/main/java/de/fjure/isd/mycoach/feature_workout/presentation/add_edit_workout/components/FinalizeWorkout.kt" value="0.2" />
+        <entry key="app/src/main/java/de/fjure/isd/mycoach/feature_workout/presentation/dashboard/HomeScreen.kt" value="0.32314814814814813" />
+        <entry key="app/src/main/java/de/fjure/isd/mycoach/feature_workout/presentation/dashboard/components/Trends.kt" value="0.32314814814814813" />
         <entry key="app/src/main/java/de/fjure/isd/mycoach/feature_workout/presentation/workout_details/WorkoutDetails.kt" value="0.32559121621621623" />
+        <entry key="app/src/main/java/de/fjure/isd/mycoach/feature_workout/presentation/workout_details/active_workout/ActiveWorkout.kt" value="0.21203703703703702" />
+        <entry key="app/src/main/java/de/fjure/isd/mycoach/feature_workout/presentation/workout_details/active_workout/components/ExerciseDetails.kt" value="0.2858952702702703" />
         <entry key="app/src/main/java/de/fjure/isd/mycoach/feature_workout/presentation/workout_details/components/WorkoutDetailsHeader.kt" value="0.32559121621621623" />
+        <entry key="app/src/main/java/de/fjure/isd/mycoach/feature_workout/presentation/workouts/Workouts.kt" value="0.22" />
         <entry key="app/src/main/java/de/fjure/isd/mycoach/feature_workout/presentation/workouts/components/WorkoutItem.kt" value="0.5" />
+        <entry key="app/src/main/java/de/fjure/isd/mycoach/feature_workout/presentation/workouts/components/WorkoutListRow.kt" value="0.33" />
       </map>
     </option>
   </component>
