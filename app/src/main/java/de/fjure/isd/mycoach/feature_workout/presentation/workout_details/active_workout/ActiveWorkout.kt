@@ -2,7 +2,6 @@ package de.fjure.isd.mycoach.feature_workout.presentation.workout_details.active
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -49,7 +48,6 @@ fun ActiveWorkout(
         Spacer(modifier = Modifier.height(100.dp))
 
         ExerciseDetails(exercise = workout.exercises[0])
-        Text(text = "Teesttstste")
     }
 }
 

@@ -13,7 +13,6 @@ import coil.compose.AsyncImage
 import de.fjure.isd.mycoach.commons.presentation.components.GenericButton
 import de.fjure.isd.mycoach.commons.presentation.components.GenericTextField
 import de.fjure.isd.mycoach.feature_workout.model.Exercise
-import de.fjure.isd.mycoach.testWorkout
 import de.fjure.isd.mycoach.ui.theme.Blue
 import de.fjure.isd.mycoach.ui.theme.DarkGrey
 import de.fjure.isd.mycoach.ui.theme.MyCoachTheme
@@ -21,8 +20,17 @@ import de.fjure.isd.mycoach.ui.theme.Red
 
 @Composable
 fun FinalizeWorkout(onDismiss: () -> Unit, exercises: List<Exercise>) {
-    var workout = remember { mutableStateOf(testWorkout) }
-    workout.value.exercises = exercises
+
+    var name = remember { mutableStateOf("") }
+    var playlistUrl = remember { mutableStateOf("") }
+    var imageUrl = remember { mutableStateOf("") }
+    var category = remember { mutableStateOf("") }
+
+    fun submit() {
+        
+        onDismiss()
+    }
+
     MyCoachTheme {
         Column(
             modifier = Modifier
@@ -33,26 +41,26 @@ fun FinalizeWorkout(onDismiss: () -> Unit, exercises: List<Exercise>) {
             Spacer(modifier = Modifier.height(50.dp))
             GenericTextField(
                 label = "Workoutname",
-                value = "",
-                onValueChange = { workout.value.name = it })
+                value = name.value,
+                onValueChange = { name.value = it })
             Spacer(modifier = Modifier.height(25.dp))
             GenericTextField(
                 label = "Playlistlink",
-                value = "",
-                onValueChange = { workout.value.playlistUrl = it })
+                value = playlistUrl.value,
+                onValueChange = { playlistUrl.value = it })
             Spacer(modifier = Modifier.height(25.dp))
             GenericTextField(
                 label = "Kategorie",
-                value = "",
-                onValueChange = { workout.value.category = it })
+                value = category.value,
+                onValueChange = { category.value = it })
             Spacer(modifier = Modifier.height(25.dp))
             GenericTextField(
                 label = "Link Titelbild",
                 value = "",
-                onValueChange = { workout.value.imageUrl = it })
+                onValueChange = { imageUrl.value = it })
             Spacer(modifier = Modifier.height(25.dp))
             AsyncImage(
-                model = workout.value.imageUrl,
+                model = imageUrl.value,
                 contentDescription = "",
                 modifier = Modifier
                     .height(150.dp)
@@ -71,7 +79,7 @@ fun FinalizeWorkout(onDismiss: () -> Unit, exercises: List<Exercise>) {
             GenericButton(
                 color = Blue,
                 text = "Workout veröffentlichen",
-                onClick = { onDismiss() },
+                onClick = { submit() },
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentSize(Alignment.Center)

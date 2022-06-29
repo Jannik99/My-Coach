@@ -26,14 +26,19 @@ import de.fjure.isd.mycoach.commons.presentation.components.GenericButton
 import de.fjure.isd.mycoach.feature_workout.model.Exercise
 import de.fjure.isd.mycoach.feature_workout.presentation.add_edit_workout.components.AddExerciseItem
 import de.fjure.isd.mycoach.feature_workout.presentation.add_edit_workout.components.FinalizeWorkout
-import de.fjure.isd.mycoach.testWorkout
 import de.fjure.isd.mycoach.ui.theme.*
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun AddWorkout() {
-    val sampleExercise = testWorkout.exercises[0]
-    val exercises = remember { mutableStateListOf<Exercise>() }
+    val sampleExercise = Exercise(
+        id = "1",
+        name = "",
+        description = "",
+        imageUrl = "",
+        executions = 0,
+    )
+    var exercises = remember { mutableStateListOf<Exercise>() }
     val scrollState = rememberScrollState()
     val showDialog = remember { mutableStateOf(false) }
     Column(
@@ -53,7 +58,11 @@ fun AddWorkout() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             exercises.forEach { exercise ->
-                AddExerciseItem(exercise)
+                AddExerciseItem(exercise, onExerciseChanged = { newExercise ->
+                    exercises.indexOf(exercise).let { index ->
+                        exercises[index] = newExercise
+                    }
+                })
                 Icon(
                     Icons.Default.ExpandMore,
                     contentDescription = "",

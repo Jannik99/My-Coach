@@ -25,11 +25,8 @@ class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        users = DataController().readUsers(this.assets)
-        workouts = DataController().readWorkouts(this.assets)
-        featuredWorkouts = workouts.filter { it.featured }
-        categories = workouts.map { it.category }.distinct().sorted()
 
+        setData()
         setContent {
             MyCoachTheme {
                 val navController = rememberNavController()
@@ -41,6 +38,13 @@ class MainActivity : ComponentActivity() {
 
             }
         }
+    }
+
+    fun setData() {
+        users = DataController().readUsers(this.assets)
+        workouts = DataController().readWorkouts(this.assets)
+        featuredWorkouts = workouts.filter { it.featured }
+        categories = workouts.map { it.category }.distinct().sorted()
     }
 }
 

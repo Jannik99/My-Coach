@@ -5,10 +5,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
@@ -21,7 +22,32 @@ import de.fjure.isd.mycoach.ui.theme.DarkGrey
 import de.fjure.isd.mycoach.ui.theme.Ivory
 
 @Composable
-fun AddExerciseItem(exercise: Exercise) {
+fun AddExerciseItem(exercise: Exercise, onExerciseChanged: (Exercise) -> Unit) {
+    var name = remember {
+        mutableStateOf(exercise.name)
+    }
+    var description = remember {
+        mutableStateOf(exercise.description)
+    }
+    var imageUrl = remember {
+        mutableStateOf(exercise.imageUrl)
+    }
+    var executions = remember {
+        mutableStateOf(exercise.executions)
+    }
+
+    fun exerciseChanged() {
+        onExerciseChanged(
+            Exercise(
+                exercise.id,
+                name.value,
+                description.value,
+                imageUrl.value,
+                executions.value
+            )
+        )
+    }
+
     Row(
         modifier = Modifier
             .background(DarkGrey)
@@ -32,38 +58,54 @@ fun AddExerciseItem(exercise: Exercise) {
     ) {
         Column(modifier = Modifier.weight(1f)) {
             Image(
-                painter = rememberAsyncImagePainter(exercise.imageUrl),
-                contentDescription = exercise.name,
+                painter = rememberAsyncImagePainter(imageUrl.value),
+                contentDescription = null,
                 modifier = Modifier.fillMaxWidth()
             )
         }
         Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = exercise.name,
-                style = typography.h6,
-                modifier = Modifier.padding(16.dp)
+            TextField(
+                value = name.value,
+                modifier = Modifier.padding(16.dp),
+                label = { Text(text = "Name") },
+                onValueChange = {
+                    name.value = it
+                    exerciseChanged()
+                },
             )
-            Text(
-                text = exercise.description,
-                style = typography.body1,
-                modifier = Modifier.padding(16.dp)
+            TextField(
+                value = description.value,
+                modifier = Modifier.padding(16.dp),
+                label = { Text(text = "Beschreibung") },
+                onValueChange = {
+                    description.value = it
+                    exerciseChanged()
+                },
             )
         }
         Column(modifier = Modifier.weight(1f)) {
-            Text("Anzahl Ausführungen:")
-
             TextField(
-                value = exercise.executions.toString(),
+                value = executions.value.toString(),
                 modifier = Modifier.fillMaxWidth(),
+                label = { Text(text = "Anzahl Audführungen") },
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
                 onValueChange = {
-                    // Funktioniert nicht, wegen Mutable State Gedöns. To be Done.
                     if (it.isNotEmpty()) {
-                        exercise.executions = it.toInt()
+                        executions.value = it.toInt()
                     } else {
-                        exercise.executions = 0
+                        executions.value = 0
                     }
+                    exerciseChanged()
                 }
+            )
+            TextField(
+                value = imageUrl.value,
+                modifier = Modifier.padding(16.dp),
+                label = { Text(text = "Bild-URL") },
+                onValueChange = {
+                    imageUrl.value = it
+                    exerciseChanged()
+                },
             )
         }
     }
@@ -72,5 +114,5 @@ fun AddExerciseItem(exercise: Exercise) {
 @Preview(showBackground = true)
 @Composable
 fun AddExerciseItemPreview() {
-    AddExerciseItem(testWorkout.exercises[0])
+    AddExerciseItem(testWorkout.exercises[0], {})
 }

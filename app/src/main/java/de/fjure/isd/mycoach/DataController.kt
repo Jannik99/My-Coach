@@ -28,6 +28,10 @@ var testWorkout: Workout = Workout(
 
 class DataController {
 
+    fun writeWorkouts(workouts: List<Workout>) {
+        // TODO
+    }
+
     fun readUsers(assets: AssetManager): List<User> {
         return Gson().fromJson(assets.readAssetsFile("Users.json"), Array<User>::class.java)
             .toList()
